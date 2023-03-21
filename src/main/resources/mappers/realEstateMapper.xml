@@ -18,7 +18,7 @@
 			`id` = #{id}
 	</select>
 	
-	<select id="selectRealEstate2" parameterType="Integer" resultType="com.quiz.lesson03.model.RealEstate">
+	<select id="selectRealEstateList" parameterType="Integer" resultType="com.quiz.lesson03.model.RealEstate">
 		 SELECT
 			`id`
 			, `realtorId`
@@ -32,5 +32,26 @@
 		FROM `real_estate`
 		WHERE
 			rentPrice &lt; #{rentPrice}
+	</select>
+	
+	<select id="selectRealEstateList2" parameterType="int" resultType="com.quiz.lesson03.model.RealEstate">
+		SELECT
+			`id`
+			, `realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		FROM `real_estate`
+		WHERE
+			 <![CDATA[
+			 `type`="매매" AND
+			 `area` >= #{area} AND
+			 `price` <= #{price}
+        ]]>
+        ORDER BY `id` DESC
 	</select>
 </mapper>
