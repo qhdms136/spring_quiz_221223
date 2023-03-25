@@ -39,16 +39,10 @@ public class Lesson04Quzi01Controller {
 	
 	// http://localhost:8080/lesson04/quiz01/seller_info
 	@GetMapping("/seller_info")
-	public String getLatestSeller(Model model) {
-		Seller seller = sellerBO.getLatestSeller();
+	public String getLatestSeller(@RequestParam("id") int id, Model model) {
+		Seller seller = sellerBO.getLatestSellerByid(id);
 		model.addAttribute("seller", seller);
 		model.addAttribute("title", "판매자 정보");
-		return "lesson04/getLatestSeller";
-	}
-	
-	public String getLatestSeller(
-			@RequestParam("id") int id) {
-		Seller seller = sellerBO.getLatestSeller(id);
 		return "lesson04/getLatestSeller";
 	}
 }

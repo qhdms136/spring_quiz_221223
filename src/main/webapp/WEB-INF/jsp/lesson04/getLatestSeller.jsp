@@ -11,10 +11,10 @@
 </head>
 <body>
 	<div class="container">
-		<h1>${title}</h1>
+		<p style="font-size:40px;"><b>${title}</b></p>
 		<img src="${seller.profileImageUrl}" width=300>
 		<div class="display-4">${seller.nickname}</div>
-		<div class="display-2 fw-bold text-warning">${seller.temperature}</div>
+		<div class="text-warning" style="font-size:36px;"><b>${seller.temperature}</b></div>
 	</div>
 </body>
 </html>

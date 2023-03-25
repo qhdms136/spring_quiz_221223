@@ -19,7 +19,7 @@ public class SellerBO {
 		return sellerMapper.selectLatestSeller();
 	}
 	
-	public Seller getLatestSeller(int id) {
+	public Seller getLatestSellerByid(int id) {
 		return sellerMapper.selectLatestSellerById(id);
 	}
 }
