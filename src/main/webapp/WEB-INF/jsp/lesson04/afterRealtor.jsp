@@ -11,10 +11,29 @@
 </head>
 <body>
 	<div class="container">
-		<p style="font-size:40px;"><b>${title}</b></p>
-		<img src="${seller.profileImageUrl}" alt="판매자 프로필 사진" width="300">
-		<div class="display-4">${seller.nickname}</div>
-		<div class="text-warning" style="font-size:36px;"><b>${seller.temperature}</b></div>
+		<h1>${title}</h1>
+		<table class="table">
+			<tr>
+				<th>ID</th>
+				<td>${result.id}</td>
+			</tr>
+			<tr>
+				<th>상호명</th>
+				<td>${result.office}</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>${result.phoneNumber}</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>${result.address}</td>
+			</tr>
+			<tr>
+				<th>등급</th>
+				<td>${result.grade}</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

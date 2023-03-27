@@ -19,7 +19,8 @@ public class SellerBO {
 		return sellerMapper.selectLatestSeller();
 	}
 	
-	public Seller getLatestSellerByid(int id) {
-		return sellerMapper.selectLatestSellerById(id);
+	// 여기서는 아이디가 꼭 필요하므로 int
+	public Seller getSellerByid(int id) {
+		return sellerMapper.selectSellerById(id);
 	}
 }

@@ -38,9 +38,19 @@ public class Lesson04Quzi01Controller {
 	}
 	
 	// http://localhost:8080/lesson04/quiz01/seller_info
+	// http://localhost:8080/lesson04/quiz01/seller_info?id=5
 	@GetMapping("/seller_info")
-	public String getLatestSeller(@RequestParam("id") int id, Model model) {
-		Seller seller = sellerBO.getLatestSellerByid(id);
+	public String getLatestSeller(@RequestParam(value="id", required=false) Integer id, Model model) {
+		Seller seller = null;
+		// 조건문은 BO에 만드는게 좋다.
+		if(id == null) {
+			// 최신 가입자
+			seller = sellerBO.getLatestSeller();
+		} else {
+			// id에 해당하는 사용자를 가져온다.
+			seller = sellerBO.getSellerByid(id);
+		}
+		
 		model.addAttribute("seller", seller);
 		model.addAttribute("title", "판매자 정보");
 		return "lesson04/getLatestSeller";
