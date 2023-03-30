@@ -13,6 +13,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
+	<img src="/img/sunny.jpg">
 	<div class="container">
 	<h1>회원 정보 리스트</h1>
 		<table class="table text-center">
@@ -48,7 +49,16 @@
 						<b>${fn:split(member.email, '@') [0]}</b>@
 						${fn:split(member.email, '@') [1]}					
 					</td>
-					<td>${member.introduce}</td>
+					<td>
+						<c:choose>
+							<c:when test="${fn:length(member.introduce) > 15}">
+								<span>${fn:substring(member.introduce, 0, 15)} ...</span>
+							</c:when>
+							<c:otherwise>
+								<span>${member.introduce}</span>
+							</c:otherwise>
+						</c:choose>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>

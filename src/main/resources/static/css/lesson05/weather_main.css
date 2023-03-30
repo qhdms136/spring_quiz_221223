@@ -1,0 +1,10 @@
+@charset "UTF-8";
+#wrap{width:1200px;height:1000px;margin:0 auto;}
+header{width:250px;}
+.logo{height:100px;background-color:#6B98F2}
+.logo2{width:250px;}
+.logo-font{font-size:24px;font-weight:bold;color:#ffffff;}
+.menu{width:250px;height:900px;background-color:#6B98F2}
+.contetns{width:950px;height:1000px;}
+a{text-decoration:none;color:#ffffff;font-size:24px;font-weight:bold}
+footer{height:100px;}
