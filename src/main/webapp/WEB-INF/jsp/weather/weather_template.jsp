@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="wrap" class="bg-dark">
+	<div id="wrap">
 		<div class="d-flex">
 			<header>
 				<div class="logo d-flex justify-content-center align-items-center">
@@ -27,7 +27,7 @@
 							<a href="#" class="nav-link">날씨</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">날씨입력</a>
+							<a href="/lesson05/add_weather" class="nav-link">날씨입력</a>
 						</li>
 						<li class="nav-item">
 							<a href="#" class="nav-link">테마 날씨</a>
@@ -38,38 +38,55 @@
 					</ul>
 				</nav>
 			</header>
-			<div class="contents bg-info">
-				<h1>과거 날씨</h1>
-				<table class="table">
-					<thead>
-					<tr>
-						<th>날짜</th>
-						<th>날씨</th>
-						<th>기온</th>
-						<th>강수량</th>
-						<th>미세먼지</th>
-						<th>풍속</th>
-					</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${weathers}" var="weather" varStatus="status">
-							<tr>
-								<td>
-									<fmt:parseDate value="${weather.date}" pattern="yyyy-MM-dd HH:mm:SS" var="date1"/>
-									<fmt:formatDate value="${date1}" pattern="yyyy년 M월 d일"/>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+			<div class="contents pt-3">
+					<h1>과거 날씨</h1>
+					<table class="table text-center">
+						<thead>
+						<tr>
+							<th>날짜</th>
+							<th>날씨</th>
+							<th>기온</th>
+							<th>강수량</th>
+							<th>미세먼지</th>
+							<th>풍속</th>
+						</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${weathers}" var="weather" varStatus="status">
+								<tr>
+									<td>
+										<fmt:formatDate value="${weather.date}" pattern="yyyy년 M월 dd일" var="date1"/>
+										${date1}
+									</td>
+									<td>
+										<c:choose>
+											<c:when test="${weather.weather == '비'}">
+												<img src="/img/rainy.jpg">
+											</c:when>
+											<c:when test="${weather.weather == '흐림' }">
+												<img src="/img/cloudy.jpg">
+											</c:when>
+											<c:when test="${weather.weather == '맑음' }">
+												<img src="/img/sunny.jpg">
+											</c:when>
+											<c:otherwise>
+												<img src="/img/partlyCloudy.jpg">
+											</c:otherwise>
+										</c:choose>
+									</td>
+									<td>
+										<fmt:formatNumber value="${weather.temperatures}" pattern="#.#" />℃
+									</td>
+									<td><fmt:formatNumber value="${weather.precipitation}" pattern="#.#" />mm</td>
+									<td>${weather.microDust}</td>
+									<td>${weather.windSpeed}km/h</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 			</div>
 		</div>
-		<footer class="bg-warning d-flex " >
+		<footer class="d-flex">
 		<div class="logo2 d-flex justify-content-center align-items-center">
 			<img src="/img/sig3.png" width="200">
 		</div>	
