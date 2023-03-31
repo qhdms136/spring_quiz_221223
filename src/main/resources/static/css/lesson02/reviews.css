@@ -7,8 +7,12 @@ margin-left:40px;margin-bottom:15px;}
 .content1{height:200px;border-style:solid;
 border-width:2px;border-color:#17AEBF;
 border-radius:10px;}
-.store-font{margin-bottom:15px;font-size:40px;font-weight:bold;}
-.info-font{font-size:24px;}
+.store-font{font-size:24px;font-weight:bold;}
+.info-cdate{padding-bottom:25px;font-size:20px;color:#8C8C8C}
+.info-review{font-size:20px;}
+.none-review{font-size:32px;font-weight:bold;}
+.info-menu{margin-bottom:20px;background-color:#BDBDBD;border-radius:5px;
+font-size:18px;}
 footer{height:150px;}
 .footer-font1{font-size:38px;}
 .footer-font2{font-size:28px;color:#8C8C8C;margin-top:10px;}

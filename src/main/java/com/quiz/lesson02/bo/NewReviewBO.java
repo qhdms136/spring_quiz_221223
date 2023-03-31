@@ -14,7 +14,7 @@ public class NewReviewBO {
 	@Autowired
 	private NewReviewMapper newReviewMapper;
 	
-	public List<NewReview> getNewReviewList() {
-		return newReviewMapper.selectNewReviewList();
+	public List<NewReview> getNewReviewList(int storeId) {
+		return newReviewMapper.selectNewReviewList(storeId);
 	}
 }

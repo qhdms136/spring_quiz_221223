@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.quiz.lesson02.bo.NewReviewBO;
 import com.quiz.lesson02.bo.StoreBO;
@@ -19,6 +20,8 @@ public class StoreController {
 	
 	@Autowired
 	private StoreBO storeBO;
+	
+	@Autowired
 	private NewReviewBO newReviewBO;
 	
 	@GetMapping("/store_template")
@@ -29,10 +32,14 @@ public class StoreController {
 		return "store/store_template";
 	}
 	
-	@GetMapping("/review_list")
-	public String review_list(Model model) {
-		List<NewReview> reviewList = newReviewBO.getNewReviewList();
+	@GetMapping("/reviews")
+	public String review_list(
+			@RequestParam(value="storeId") int storeId,
+			@RequestParam(value="storeName") String storeName
+			, Model model) {
+		List<NewReview> reviewList = newReviewBO.getNewReviewList(storeId);
 		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("storeName", storeName);
 		return "store/reviews";
 	}
 }
