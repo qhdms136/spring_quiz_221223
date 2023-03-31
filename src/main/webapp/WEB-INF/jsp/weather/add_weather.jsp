@@ -43,28 +43,28 @@
 			</header>
 			<div class="contents pt-3">
 					<h1>날씨 입력</h1>	
-					<form method="post" action="">
+					<form method="post" action="/lesson05/add_weather_view">
 					<div class="d-flex justify-content-between">
 							<div class="d-flex align-items-center">
-								<label for="datepiker">날짜</label>
-								<input id="datepiker" class="form-control mx-2">
+								<label for="date">날짜</label>
+								<input id="date" name="date" class="form-control mx-2">
 							</div>
 							<div class="d-flex align-items-center">
 								<label for="weather">날씨</label>
 								<select id="weather" name="weather" class="form-select mx-2 form-control">
-									<option value="rainy">비</option>
-									<option value="cloudy">흐림</option>
-									<option selected value="sunny">맑음</option>
-									<option value="partlyCloudy">구름조금</option>
+									<option value="비">비</option>
+									<option value="흐림">흐림</option>
+									<option selected value="맑음">맑음</option>
+									<option value="구름조금">구름조금</option>
 								</select>
 							</div>
 							<div class="d-flex align-items-center">
 								<label for="microDust">미세먼지</label>
 								<select id="microDust" name="microDust" class="form-select mx-2 form-control">
-									<option selected value="good">좋음</option>
-									<option value="generally">보통</option>
-									<option value="bad">나쁨</option>
-									<option value="worst">최악</option>
+									<option selected value="좋음">좋음</option>
+									<option value="보통">보통</option>
+									<option value="나쁨">나쁨</option>
+									<option value="최악">최악</option>
 								</select>
 							</div>
 						</div>
@@ -112,7 +112,7 @@
 				yearSuffix: '년'
 			});
 			
-			$('#datepiker').datepicker();
+			$('#date').datepicker();
 		});
 	</script>
 	<style>
