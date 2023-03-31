@@ -50,6 +50,6 @@ public class WeatherHistoryController {
 		
 		weatherHistoryBO.addWeatherHistory(date, weather, temperatures, precipitation, microDust, windSpeed);
 		
-		return "redirect:/weather/weather_template";
+		return "redirect:/lesson05/weather_template";
 	}
 }

@@ -24,7 +24,7 @@
 				<nav class="menu">
 					<ul class="nav flex-column">
 						<li class="nav-item">
-							<a href="#" class="nav-link">날씨</a>
+							<a href="/lesson05/weather_template" class="nav-link">날씨</a>
 						</li>
 						<li class="nav-item">
 							<a href="/lesson05/add_weather" class="nav-link">날씨입력</a>

@@ -22,71 +22,67 @@
 		<div class="d-flex">
 			<header>
 				<div class="logo d-flex justify-content-center align-items-center">
-					<img src="/img/sig2.png" width="50" class="mx-2"><span class="logo-font">기상청</span>
+					<img src="/img/sig2.png" width="50" class="mx-2"><span
+						class="logo-font">기상청</span>
 				</div>
 				<nav class="menu">
 					<ul class="nav flex-column">
-						<li class="nav-item">
-							<a href="#" class="nav-link">날씨</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">날씨입력</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">테마 날씨</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">관측 기후</a>
-						</li>
+						<li class="nav-item"><a href="/lesson05/weather_template" class="nav-link">날씨</a></li>
+						<li class="nav-item"><a href="/lesson05/add_weather"
+							class="nav-link">날씨입력</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">테마 날씨</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">관측 기후</a></li>
 					</ul>
 				</nav>
 			</header>
 			<div class="contents pt-3">
-					<h1>날씨 입력</h1>	
-					<form method="post" action="/lesson05/add_weather_view">
-					<div class="d-flex justify-content-between">
-							<div class="d-flex align-items-center">
-								<label for="date">날짜</label>
-								<input id="date" name="date" class="form-control mx-2">
-							</div>
-							<div class="d-flex align-items-center">
-								<label for="weather">날씨</label>
-								<select id="weather" name="weather" class="form-select mx-2 form-control">
-									<option value="비">비</option>
-									<option value="흐림">흐림</option>
-									<option selected value="맑음">맑음</option>
-									<option value="구름조금">구름조금</option>
-								</select>
-							</div>
-							<div class="d-flex align-items-center">
-								<label for="microDust">미세먼지</label>
-								<select id="microDust" name="microDust" class="form-select mx-2 form-control">
-									<option selected value="좋음">좋음</option>
-									<option value="보통">보통</option>
-									<option value="나쁨">나쁨</option>
-									<option value="최악">최악</option>
-								</select>
-							</div>
+				<h1>날씨 입력</h1>
+				<form method="post" action="/lesson05/add_weather_view">
+					<div class="box1 d-flex justify-content-between">
+						<div class="d-flex align-items-center">
+							<label for="date">날짜</label> 
+							<input type="text" id="date" name="date" class="form-control mx-2">
 						</div>
-						<div class="d-flex justify-content-between">
-							<div class="input-group d-flex align-items-center col-4">
-								<label for="temperatures">기온</label>
-								<input id="temperatures" class="form-control ml-2">
-								<span class="input-group-text">℃</span>
-							</div>
-							<div class="input-group d-flex align-items-center col-4">
-								<label for="precipitation">강수량</label>
-								<input id="precipitation" class="form-control ml-2">
-								<span class="input-group-text">mm</span>
-							</div>
-							<div class="input-group d-flex align-items-center col-4">
-								<label for="windSpeed">풍속</label>
-								<input id="windSpeed" class="form-control ml-2">
-								<span class="input-group-text">km/h</span>
-							</div>
+						<div class="d-flex align-items-center">
+							<label for="weather">날씨</label> 
+							<select id="weather" name="weather" class="form-select mx-2 form-control">
+								<option value="비">비</option>
+								<option value="흐림">흐림</option>
+								<option selected value="맑음">맑음</option>
+								<option value="구름조금">구름조금</option>
+							</select>
 						</div>
+						<div class="d-flex align-items-center">
+							<label for="microDust">미세먼지</label> 
+							<select id="microDust" name="microDust" class="form-select mx-2 form-control">
+								<option selected value="좋음">좋음</option>
+								<option value="보통">보통</option>
+								<option value="나쁨">나쁨</option>
+								<option value="최악">최악</option>
+							</select>
+						</div>
+					</div>
+					<div class="box2 d-flex justify-content-between">
+						<div class="input-group d-flex align-items-center col-4">
+							<label for="temperatures">기온</label> 
+							<input type="text" name="temperatures" id="temperatures" class="form-control ml-2">
+							<span class="input-group-text">℃</span>
+						</div>
+						<div class="input-group d-flex align-items-center col-4">
+							<label for="precipitation">강수량</label> 
+							<input type="text"name="precipitation" id="precipitation" class="form-control ml-2">
+							<span class="input-group-text">mm</span>
+						</div>
+						<div class="input-group d-flex align-items-center col-4">
+							<label for="windSpeed">풍속</label> <input type="text"
+								name="windSpeed" id="windSpeed" class="form-control ml-2">
+							<span class="input-group-text">km/h</span>
+						</div>
+					</div>
+					<div class="d-flex justify-content-end">
 						<button type="submit" class="btn btn-success">저장</button>
-					</form>
+					</div>
+				</form>
 			</div>
 		</div>
 		<footer class="d-flex">
