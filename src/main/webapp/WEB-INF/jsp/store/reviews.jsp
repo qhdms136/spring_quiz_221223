@@ -24,7 +24,6 @@
 				<span class="title">${storeName} - 리뷰</span>
 			</div>
 			<c:forEach items="${reviewList}" var="review" varStatus="status">
-				<c:if test="${empty review.storeId}">!!!!</c:if>
 				<div class="content1 d-flex align-items-center my-4">
 					<div class="ml-4">
 						<div class="d-flex align-items-center mt-3">
@@ -47,6 +46,7 @@
 					</div>	
 				</div>
 			</c:forEach>
+			<c:if test="${empty reviewList}"><div class="none-review">작성된 리뷰가 없습니다.</div></c:if>
 			<hr>
 		</div>
 		<footer>

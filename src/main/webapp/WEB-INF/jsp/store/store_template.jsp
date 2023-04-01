@@ -17,10 +17,10 @@
 <body>
 	<div id="wrap"class="container bg-lighter">
 		<header class="d-flex align-items-center bg-info">
-			<span class="logo-font">배탈의 민족</span>
+			<a class="logo-font" href="/store/store_template">배탈의 민족</a>
 		</header>
 		<div class="contents">
-			<div class="title-box d-flex align-items-center bg-warning">
+			<div class="title-box d-flex align-items-center">
 				<span class="title">우리동네 가게</span>
 			</div>
 			<c:forEach items="${storeList}" var="store">

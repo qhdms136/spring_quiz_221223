@@ -12,4 +12,5 @@ public interface NewReviewMapper {
 	
 	public List<NewReview> selectNewReviewList(
 			@Param("storeId") int storeId);
+	
 }

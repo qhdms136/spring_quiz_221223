@@ -10,11 +10,10 @@ border-radius:10px;}
 .store-font{font-size:24px;font-weight:bold;}
 .info-cdate{padding-bottom:25px;font-size:20px;color:#8C8C8C}
 .info-review{font-size:20px;}
-.none-review{font-size:32px;font-weight:bold;}
+.none-review{font-size:45px;font-weight:bold;margin-left:50px;margin-top:50px;height:150px;}
 .info-menu{margin-bottom:20px;background-color:#BDBDBD;border-radius:5px;
 font-size:18px;}
 footer{height:150px;}
 .footer-font1{font-size:38px;}
 .footer-font2{font-size:28px;color:#8C8C8C;margin-top:10px;}
-a{color:#000000;}
-a:hover{text-decoration:none;}
+a:hover{text-decoration:none;color:#FF007F;}

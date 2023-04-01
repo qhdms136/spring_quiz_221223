@@ -17,4 +17,5 @@ public class NewReviewBO {
 	public List<NewReview> getNewReviewList(int storeId) {
 		return newReviewMapper.selectNewReviewList(storeId);
 	}
+	
 }
