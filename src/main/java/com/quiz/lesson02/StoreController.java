@@ -38,7 +38,6 @@ public class StoreController {
 			@RequestParam(value="storeName") String storeName
 			, Model model) {
 		List<NewReview> reviewList = newReviewBO.getNewReviewList(storeId);
-		//List<NewReview> reviewCount = newReviewBO.getNewReviewCount(storeId);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeName", storeName);
 		return "store/reviews";

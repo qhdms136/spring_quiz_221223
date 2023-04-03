@@ -45,6 +45,6 @@ public class Lesson06QuizController {
 		List<Favorite> favoriteList = favoriteBO.getFavoriteList();
 		model.addAttribute("favoriteList", favoriteList);
 		
-		return "lessont06/resultFavorite";
+		return "lesson06/resultFavorite";
 	}
 }

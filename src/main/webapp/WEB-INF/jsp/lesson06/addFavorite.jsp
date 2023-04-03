@@ -55,7 +55,7 @@
 				// response
 				, success:function(data){
 					if(data == "성공"){
-						location.href="lesson06/quiz01/result_favorite"
+						location.href="/lesson06/quiz01/result_favorite"
 					}
 				}
 				, error:function(request, status, error){
