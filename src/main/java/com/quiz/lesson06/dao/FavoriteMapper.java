@@ -10,9 +10,11 @@ import com.quiz.lesson06.model.Favorite;
 @Repository
 public interface FavoriteMapper {
 	
-	public void insertFavoriteField(
+	public int insertFavoriteField(
 			@Param("name") String name,
 			@Param("url") String url);
 	
 	public List<Favorite> selectFavoriteList();
+	
+	public boolean existFavoriteByUrl(String url);
 }

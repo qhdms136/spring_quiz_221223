@@ -14,11 +14,15 @@ public class FavoriteBO {
 	@Autowired
 	private FavoriteMapper favoriteMapper;
 	
-	public void addFavoriteField(String name, String url) {
-		favoriteMapper.insertFavoriteField(name, url);
+	public int addFavoriteField(String name, String url) {
+		return favoriteMapper.insertFavoriteField(name, url);
 	}
 	
 	public List<Favorite> getFavoriteList(){
 		return favoriteMapper.selectFavoriteList();
+	}
+	
+	public boolean existFavoriteByUrl(String url) {
+		return favoriteMapper.existFavoriteByUrl(url);
 	}
 }

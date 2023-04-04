@@ -1,6 +1,8 @@
 package com.quiz.lesson06;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,13 +31,25 @@ public class Lesson06QuizController {
 	
 	@PostMapping("/add_favorite")
 	@ResponseBody
-	public String addFavorite(
+	public Map<String, Object> addFavorite(
 			@RequestParam("name") String name,
 			@RequestParam("url") String url) {
+		// {"code":1, "result":"성공"}
+		// {"code":500, "errorMessage":"추가하는데 실패했습니다."}
 		
 		// insert
-		favoriteBO.addFavoriteField(name, url);
-		return "성공";
+		int rowCount = favoriteBO.addFavoriteField(name, url);
+		Map<String, Object> result = new HashMap<>();
+		if(rowCount > 0) {
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "데이터를 추가하는데 실패했습니다.");
+		}
+		
+		
+		return result;	// JSON String 으로 응답
 	}
 
 	@GetMapping("/result_favorite")
@@ -46,5 +60,14 @@ public class Lesson06QuizController {
 		model.addAttribute("favoriteList", favoriteList);
 		
 		return "lesson06/resultFavorite";
+	}
+	
+	// ajax 요청 중복확인
+	@GetMapping("/is_duplication")
+	public Map<String, Boolean> isDuplication(
+			@RequestParam("url") String url){
+		Map<String, Boolean> result = new HashMap<>();
+		result.put("isDuplication", favoriteBO.existFavoriteByUrl(url));
+		return result;
 	}
 }
