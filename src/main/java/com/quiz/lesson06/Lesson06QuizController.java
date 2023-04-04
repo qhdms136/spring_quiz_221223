@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,10 +65,16 @@ public class Lesson06QuizController {
 	
 	// ajax 요청 중복확인
 	@GetMapping("/is_duplication")
+	@ResponseBody // 꼭 써라
 	public Map<String, Boolean> isDuplication(
 			@RequestParam("url") String url){
 		Map<String, Boolean> result = new HashMap<>();
 		result.put("isDuplication", favoriteBO.existFavoriteByUrl(url));
 		return result;
+	}
+	
+	@DeleteMapping("/{id}")
+	public int deleteFavorite() {
+		return 1;
 	}
 }

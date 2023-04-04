@@ -56,6 +56,8 @@
 				, success:function(data){
 					if(data.isDuplication == true){
 						$("#urlStatusArea").append('<span class="text-danger">중복된 url 입니다.</span>');
+					} else{
+						$("#urlStatusArea").append('<span class="text-danger">저장 가능한 url 입니다.</span>');
 					}
 				}
 				, error:function(request, status, error){

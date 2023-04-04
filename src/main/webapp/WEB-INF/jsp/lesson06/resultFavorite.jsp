@@ -24,6 +24,7 @@
 					<th>No.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +33,7 @@
 					<td>${favorite.id}</td>
 					<td>${favorite.name}</td>
 					<td><a href="${favorite.url}" class="url-font" target="_blank">${favorite.url}</a></td>
+					<td><button type="button" class="btn btn-danger site-id" onclick="location.href='/lesson06/quiz01/{${favorite.id}}'">삭제</button></td>
 				</tr>
 			</c:forEach>
 			</tbody>
