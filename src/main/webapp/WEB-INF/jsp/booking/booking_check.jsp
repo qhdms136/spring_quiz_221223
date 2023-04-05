@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +7,7 @@
 <title>예약 목록 보기</title>
 <%-- style --%>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/booking/booking_list.css">
+<link rel="stylesheet" href="/css/booking/booking_check.css">
 <%-- jquery & boot --%>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
@@ -36,47 +33,15 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="contents">
-			<div class="content-list">
-				<div class="list-title my-3 d-flex justify-content-center">예약 목록 보기</div>
-				<table class="table text-center">
-					<thead>
-						<tr>
-							<th>이름</th>
-							<th>예약날짜</th>
-							<th>숙박일수</th>
-							<th>숙박인원</th>
-							<th>전화번호</th>
-							<th>예약상태</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${bookingList}" var="booking">
-						<tr>
-							<td>${booking.name}</td>
-							<td><fmt:formatDate value="${booking.date}" pattern="yyyy년 M월 dd일"/></td>
-							<td>${booking.day}</td>
-							<td>${booking.headcount}</td>
-							<td>${booking.phoneNumber}</td>
-							<td>
-								<c:choose>
-									<c:when test="${booking.state eq '대기중'}">
-										<span class="text-primary">${booking.state}</span>
-									</c:when>
-									<c:when test="${booking.state eq '확정'}">
-										<span class="text-success">${booking.state}</span>
-									</c:when>
-									<c:when test="${booking.state eq '취소'}">
-										<span class="text-danger">${booking.state}</span>
-									</c:when>
-								</c:choose>
-							</td>
-							<td><button type="button" class="btn btn-danger">삭제</button></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+		<section class="banner bg-info">
+			<img src="/img/booking/test06_banner1.jpg" id="bannerImage" alt="banner" width="100%">
+		</section>
+		<div class="contents bg-info d-flex">
+			<div class="bg-dark real-time-reserved col-4 d-flex justify-content-center align-items-center">
+				<div class="display-4 text-white">실시간<br>예약하기</div>
+			</div>
+			<div class="bg-success col-4">
+				
 			</div>
 		</div>
 		<footer class="d-flex align-items-center">
@@ -86,5 +51,19 @@
 			</address>
 		</footer>
 	</div>
+<script>
+$(document).ready(function(){
+	  var bannerSrcArr = ['/img/booking/test06_banner1.jpg', '/img/booking/test06_banner2.jpg', '/img/booking/test06_banner3.jpg', '/img/booking/test06_banner4.jpg'];
+      var currentIndex = 0;
+      setInterval(function() {
+          $('#bannerImage').attr('src', bannerSrcArr[currentIndex]);
+          currentIndex++;
+
+          if (currentIndex > bannerSrcArr.length) { // 인덱스 값이 배열의 크기를 넘으면 0으로(처음 이미지) 세팅
+              currentIndex = 0;
+          }
+      }, 3000); // 3초에 한번씩 함수 실행
+});
+</script>	
 </body>
 </html>

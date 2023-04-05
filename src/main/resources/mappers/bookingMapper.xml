@@ -16,4 +16,27 @@
  		FROM
  			`booking`
  	</select>
+ 	
+ 	<insert id="insertBookingField" parameterType="map">
+ 		INSERT INTO `booking`
+ 		(
+ 			`name`
+			, `headcount`
+			, `day`
+			, `date`
+			, `phoneNumber`
+			, `createdAt`
+			, `updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{name}
+ 			, #{headcount}
+ 			, #{day}
+ 			, #{date}
+ 			, #{phoneNumber}
+ 			, NOW()
+ 			, NOW()
+ 		)
+ 	</insert>
  </mapper>

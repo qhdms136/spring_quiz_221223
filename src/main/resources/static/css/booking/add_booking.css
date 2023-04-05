@@ -1,0 +1,10 @@
+@charset "UTF-8";
+header{height:100px;}
+.logo-font{font-size:60px;font-weight:100;}
+.menu{height:40px;background-color:#E3881E;}
+.menu a{color:#ffffff;font-weight:bold;}
+.menu a:hover{color:#2D7400;text-decoration:none;}
+.list-title{font-size:40px;font-weight:bold;}
+.ui-datepicker { width: 17em; padding: .2em .2em 0; display: none; font-size: 20px;}
+footer{height:100px;}
+.foot-font{font-size:12px;color:#8C8C8C;}
