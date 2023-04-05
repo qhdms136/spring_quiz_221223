@@ -7,7 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,17 +63,41 @@ public class Lesson06QuizController {
 	}
 	
 	// ajax 요청 중복확인
-	@GetMapping("/is_duplication")
+	@PostMapping("/is_duplication")
 	@ResponseBody // 꼭 써라
 	public Map<String, Boolean> isDuplication(
 			@RequestParam("url") String url){
 		Map<String, Boolean> result = new HashMap<>();
-		result.put("isDuplication", favoriteBO.existFavoriteByUrl(url));
+		Favorite favorite = favoriteBO.getFavoriteByUrl(url);
+		if (favorite != null) {
+			result.put("isDuplication", true);
+		} else {
+			result.put("isDuplication", false);
+		}
+		
 		return result;
 	}
 	
-	@DeleteMapping("/{id}")
-	public int deleteFavorite() {
-		return 1;
+	// id로 삭제 API 
+	// AJAX 요청
+	// delete_favorite?id=13  X -> 정보노출로 타인이 다른사람 댓글 삭제 가능 따라서 post
+	@PostMapping("/delete_favorite")
+	@ResponseBody
+	public Map<String, Object> deleteFavorite(
+			@RequestParam("id") int id){
+		// delete
+		int rowCount = favoriteBO.deleteFavoriteById(id);
+		
+		Map<String ,Object> result = new HashMap<>();
+		
+		if(rowCount > 0) {
+			result.put("code", 1);
+			result.put("result", "성공");	
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "삭제 하는데 실패했습니다.");
+		}
+		
+		return result;
 	}
 }

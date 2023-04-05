@@ -25,7 +25,8 @@
 				<input type="text" id="url" class="form-control col-11">
 				<button type="button" class="btn btn-info col-1" id="urlCheckBtn">중복확인</button>
 			</div>
-				<small id="urlStatusArea"><span></span></small>
+				<small id="isDuplicationText" class="text-danger d-none">중복된 URL 입니다.</small>
+				<small id="availableUrlText" class="text-success d-none">저장 가능한 URL 입니다.</small>
 		</div>
 			<div class="mt-3">
 		<input type="button" id="addBtn" value="추가" class="mt-2 btn btn-success col-12">
@@ -41,23 +42,28 @@
 			let url = $("#url").val().trim();
 			
 			if(url == ""){
-				$("#urlStatusArea").append('<span class="text-danger">url을 입력해주세요</span>');
-				return;
+				alert("검사할 url을 입력해주세요");
+				return
 			}
 			
 			// ajax 통신
 			$.ajax({
 				// request
-				type:"GET"
+				type:"POST"	//주소를 get으로 mapping하면 글자수가 많아져서 안좋다.
 				, url:"/lesson06/quiz01/is_duplication"
 				, data:{"url":url}
 			
 				//response
 				, success:function(data){
+					// {"isDuplication":true}
 					if(data.isDuplication == true){
-						$("#urlStatusArea").append('<span class="text-danger">중복된 url 입니다.</span>');
+						//	중복
+						$("#isDuplicationText").removeClass("d-none");
+						$("#availableUrlText").addClass("d-none");
 					} else{
-						$("#urlStatusArea").append('<span class="text-danger">저장 가능한 url 입니다.</span>');
+						// 중복 아님 => 사용 가능
+						$("#isDuplicationText").addClass("d-none");
+						$("#availableUrlText").removeClass("d-none");
 					}
 				}
 				, error:function(request, status, error){

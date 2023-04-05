@@ -22,7 +22,13 @@ public class FavoriteBO {
 		return favoriteMapper.selectFavoriteList();
 	}
 	
-	public boolean existFavoriteByUrl(String url) {
-		return favoriteMapper.existFavoriteByUrl(url);
+	// input : url
+	// output : 1개행 또는 0개행 Favorite
+	public Favorite getFavoriteByUrl(String url) {
+		return favoriteMapper.selectFavoriteByUrl(url);
+	}
+	
+	public int deleteFavoriteById(int id) {
+		return favoriteMapper.deleteFavoriteById(id);
 	}
 }
