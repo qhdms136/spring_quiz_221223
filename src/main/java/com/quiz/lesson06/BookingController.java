@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,9 +66,56 @@ public class BookingController {
 		return "booking/bookingList";
 	}
 	
+	// delete
+	@DeleteMapping("/delete_booking")
+	@ResponseBody
+	public Map<String, Object> deleteBooking(
+			@RequestParam("id")int id){
+		
+		// delete 값 행 개수로 저장
+		int rowCount = bookingBO.deleteBookingById(id);
+		
+		Map<String, Object> result = new HashMap<>();
+		/*
+		 * 성공 여부만 확인해도됨
+		result.put("code", 1);
+		result.put("result", "성공");
+		 */
+		if(rowCount > 0) {
+			result.put("code", 1);
+			result.put("result", "성공");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "데이터를 삭제하는데 실패했습니다.");
+		}
+		
+		return result;
+	}
+	
 	// check view
+	// http://localhost:8080/booking/check_booking_view
 	@GetMapping("/check_booking_view")
 	public String checkBookingView() {
 		return "booking/booking_check";
+	}
+	
+	// 예약 내역 조회 - ajax 요청
+	@GetMapping("/check_booking")
+	@ResponseBody
+	public Map<String, Object> isDuplication(
+			@RequestParam("name") String name,
+			@RequestParam("phoneNumber") String phoneNumber){
+		Map<String, Object> result = new HashMap<>();
+		
+		// select check
+		Booking booking = bookingBO.getBookingByNamePhoneNumber(name, phoneNumber);
+		if(booking != null) {
+			result.put("code", 1);
+			result.put("booking", booking);
+		} else {
+			result.put("code", 500);
+		}
+		
+		return result;
 	}
 }

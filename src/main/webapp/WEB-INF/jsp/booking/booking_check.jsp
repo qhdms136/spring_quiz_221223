@@ -37,11 +37,30 @@
 			<img src="/img/booking/test06_banner1.jpg" id="bannerImage" alt="banner" width="100%">
 		</section>
 		<div class="contents bg-info d-flex">
-			<div class="bg-dark real-time-reserved col-4 d-flex justify-content-center align-items-center">
+			<div class="real-time-reserved col-4 d-flex justify-content-center align-items-center">
 				<div class="display-4 text-white">실시간<br>예약하기</div>
 			</div>
-			<div class="bg-success col-4">
-				
+			<div class="reserve-check-box col-4">
+				<div class="ml-3 mt-3">
+					<span class="reserve-check">예약 확인</span>
+				</div>
+				<div class="my-3 d-flex justify-content-center align-items-center">
+					<label class="name-label mr-3"for="name">이름: </label>
+					<input type="text" id="name" class="form-control form-control-sm col-8">
+				</div>
+				<div class="d-flex justify-content-center align-items-center">
+					<label class="mr-3"for="phoneNumber">전화번호: </label>
+					<input type="text" id="phoneNumber" class="form-control form-control-sm col-8">
+				</div>
+				<div class="mt-3 d-flex justify-content-end"> 
+					<button type="button" id="check-btn" class="btn btn-success">조회 하기</button>
+				</div>
+			</div>
+			<div class="reserve-number col-4 d-flex justify-content-center align-items-center">
+				<div class="text-white">
+                        <h4 class="font-weight-bold">예약문의:</h4>
+                        <h1>010-<br>0000-1111</h1>
+                </div>
 			</div>
 		</div>
 		<footer class="d-flex align-items-center">
@@ -63,6 +82,43 @@ $(document).ready(function(){
               currentIndex = 0;
           }
       }, 3000); // 3초에 한번씩 함수 실행
+      
+      $('#check-btn').on('click', function(){
+    	  let name = $('#name').val().trim();
+    	  if(!name){
+    		  alert("이름을 입력해주세요");
+    		  return;
+    	  }
+    	  let phoneNumber = $('#phoneNumber').val().trim();
+    	  if(!phoneNumber){
+    		  alert("전화번호를 입력해주세요");
+    		  return;
+    	  }
+    	  
+    	  // ajax 통신
+    	  $.ajax({
+    		 // request
+    		 type:"GET"
+    		 , url:"/booking/check_booking"
+    		 , data:{"name":name, "phoneNumber":phoneNumber}
+    		 
+    		 //response
+    		 , success:function(data){
+    			 if(data.code == 1){
+    				 alert("이름 :" + data.booking.name
+    						 + "\n날짜 : " + data.booking.date.slice(0, 10)
+    						 + "\n일수 : " + data.booking.day
+    						 + "\n인원 : " + data.booking.headcount
+    						 + "\n상태 : " + data.booking.state);
+    			 } else{
+    				 alert("예약 내역이 없습니다.");
+    			 }
+    		 }
+    		 , error:function(request, status, error){
+    			 alert("예약 내역을 조회하는데 실패했습니다.");
+    		 }
+    	  });
+      });
 });
 </script>	
 </body>

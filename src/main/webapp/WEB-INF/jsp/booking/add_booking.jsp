@@ -67,6 +67,7 @@
 $(document).ready(function(){
 	$.datepicker.setDefaults({
 		dateFormat: 'yy-mm-dd',
+		minDate:0, // 오늘부터 그 뒤 선택 (예약이기 때문에)
 		prevText: '이전 달',
 		nextText: '다음 달',
 		monthNames:['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
@@ -96,9 +97,17 @@ $(document).ready(function(){
 			alert("숙박일수를 입력해주세요");
 			return;
 		}
+		if(isNaN(day)){	//숫자가 아닌 값 들어오면 true
+			alert("숙박일수는 숫자만 입력 가능합니다.");
+			return;
+		}
 		let headcount = $("#headcount").val().trim();
 		if(!headcount){
 			alert("숙박인원을 입력해주세요");
+			return;
+		}
+		if(isNaN(headcount)){	//숫자가 아닌 값 들어오면 true
+			alert("숙박인원은 숫자만 입력 가능합니다.");
 			return;
 		}
 		let phoneNumber = $("#phoneNumber").val().trim();

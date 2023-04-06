@@ -72,7 +72,7 @@
 									</c:when>
 								</c:choose>
 							</td>
-							<td><button type="button" class="btn btn-danger">삭제</button></td>
+							<td><button type="button" class="del-btn btn btn-danger" data-booking-id="${booking.id}">삭제</button></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -86,5 +86,36 @@
 			</address>
 		</footer>
 	</div>
+<script>
+$(document).ready(function(){
+	$('.del-btn').on('click',function(){
+		let id = $(this).data('booking-id');
+		
+		// ajax 통신
+		$.ajax({
+			
+			// request
+			type:"delete"
+			, url:"/booking/delete_booking"
+			, data:{"id":id}
+		
+			// response
+			, success:function(data){
+				if(data.code == 1){
+					alert("삭제 되었습니다.");
+					location.reload(true);
+				} else{
+					alert(errorMessage);
+				}
+			}
+			, error:function(request, status, error){
+				alert(request);
+				alert(status);
+				alert(error);
+			}
+		});
+	});
+});
+</script>	
 </body>
 </html>
